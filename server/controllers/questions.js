@@ -1,5 +1,5 @@
 const Questions = require("../models/Questions");
-const surveyId = 2;
+const surveyId = 7;
 
 const createQuestion = async (req, res) => {
   try {

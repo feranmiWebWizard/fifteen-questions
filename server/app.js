@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
 const port = 3500;
 const questions = require("./routes/questions");
 const connectDb = require("./db/connect");
@@ -8,6 +9,7 @@ require("dotenv").config();
 
 // middleware
 app.use(express.json());
+app.use(cors());
 
 // routes
 app.get("/", (req, res) => {

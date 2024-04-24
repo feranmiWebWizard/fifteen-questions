@@ -1,12 +1,27 @@
-import questionData from "../../data/surveyQuestions.json";
+// import questionData from "../../data/surveyQuestions.json";
 import Questions from "./Questions";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import axios from "axios";
 
 function Questionnaire() {
   // Initialize state to store responses
   const [responses, setResponses] = useState({});
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const questionsRef = useRef([]);
+
+  // function to pull questions from backend
+  useEffect(() => {
+    // Fetch questions from backend when component mounts
+    axios
+      .get("http://localhost:3500/api/v1/questions")
+      .then((response) => {
+        setQuestions(response.data.question);
+      })
+      .catch((error) => {
+        console.error("Error fetching questions", error);
+      });
+  }, []);
 
   // Function to handle user response
   const handleResponse = (questionId, response) => {
@@ -27,12 +42,12 @@ function Questionnaire() {
   return (
     <>
       <div className="bg-stone-100 p-4 text-center">
-        {questionData.questions.map((question, index) => (
+        {questions.map((question, index) => (
           <Questions
             key={index}
             questionId={index}
             onResponse={handleResponse}
-            questionText={question}
+            questionText={question.questionText}
             isAnswered={answeredQuestions.includes(index)}
             ref={(element) => {
               questionsRef.current[index] = element;
