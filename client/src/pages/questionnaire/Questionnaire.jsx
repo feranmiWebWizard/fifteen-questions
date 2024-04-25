@@ -14,7 +14,7 @@ function Questionnaire() {
   useEffect(() => {
     // Fetch questions from backend when component mounts
     axios
-      .get("http://localhost:3500/api/v1/questions")
+      .get("https://fifteen-questions.onrender.com/api/v1/questions")
       .then((response) => {
         setQuestions(response.data.question);
       })
