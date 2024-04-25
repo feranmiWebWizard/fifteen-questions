@@ -1,10 +1,9 @@
 import "./App.css";
-import Questionnaire from "./pages/questionnaire/Questionnaire";
-
+import Home from "./pages/homepage/Index";
 function App() {
   return (
     <>
-      <Questionnaire />
+      <Home />
     </>
   );
 }
