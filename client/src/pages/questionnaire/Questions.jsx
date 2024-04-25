@@ -9,9 +9,13 @@ const Question = React.forwardRef(
         }`}
         ref={ref}
       >
-        <h2 className="text-center text-slate-600 mb-5">{questionText}</h2>
+        <h2 className="md:text-xl lg:text-2xl text-center text-slate-600 mb-5">
+          {questionText}
+        </h2>
         <div className="flex items-center justify-center gap-2 md:gap-4 py-5 w-full">
-          <h2 className="text-green-700 hidden md:block">Agree</h2>
+          <h2 className="text-green-700 md:text-xl lg:text-2xl hidden md:block">
+            Agree
+          </h2>
           <input
             type="radio"
             name={`question_${questionId}`}
@@ -68,7 +72,9 @@ const Question = React.forwardRef(
             value="7"
             onChange={() => onResponse(questionId, "7")}
           />
-          <h2 className="text-grad_six hidden md:block">Disagree</h2>
+          <h2 className="text-grad_six md:text-xl lg:text-2xl hidden md:block">
+            Disagree
+          </h2>
         </div>
       </section>
     );
