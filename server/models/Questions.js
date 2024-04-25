@@ -10,4 +10,13 @@ const QuestionsSchema = new mongoose.Schema({
   surveyId: { type: Number, required: [true, "must provide survey id"] },
 });
 
-module.exports = mongoose.model("Questions", QuestionsSchema);
+const ResponsesSchema = new mongoose.Schema({
+  surveyId: { type: Number, required: [true, "must provide survey id"] },
+  responses: { type: Object, required: [true, "must provide responses"] },
+});
+
+// Define the models based on the schemas
+const Questions = mongoose.model("Questions", QuestionsSchema);
+const Responses = mongoose.model("Responses", ResponsesSchema);
+
+module.exports = { Questions, Responses };
